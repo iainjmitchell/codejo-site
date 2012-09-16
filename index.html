@@ -4,6 +4,7 @@
         <title>Manchester Codejo</title>
 		<meta name="description" content="A new monthly coding meetup in Manchester">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/site.css" rel="stylesheet">
 		<style type="text/css">
       		body {
         		padding-top: 60px;
@@ -25,28 +26,44 @@
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
-					<div class="container">
-					<a class="brand" href="#">Manchester Codejo</a>
+				<div class="container">
+					<a class="brand" href="http://www.manchester-codejo.com">Manchester<span class="text-info">Codejo</span></a>
 				</div>
 			</div>
 		</div>
 
-
-
-
 		<div class="container">
-			
 			<div class="hero-unit">
-        		<h1>Manchester Codejo</h1>
-        		<p>Coming soon....</p>
+        		<img src="img/codejo.png"></img>
 			</div>
+			<div class="row">
+        <div class="span4">
+          <div id="twitterContent"></div>
+        </div>
+        <div class="span4">
+          
+       </div>
+        <div class="span4">
+          
+        </div>
+      </div>
 			<hr>
 			<footer>
-        		
         		<p class="pull-right">site design by <a href="http://www.iainjmitchell.com/blog">iainjmitchell</a></p>
       		</footer>
 		</div>
 		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js"></script>
 		<script src="lib/bootstrap.min.js"></script>
+		<script src="lib/twitTweet-min.js"></script>
+		<script>
+			(function($, undefined){
+				$(document).ready(function(){
+					$("#twitterContent").twitTweet({
+						userName: 'manc_codejo',
+					});
+				});
+			})(jQuery);
+		</script>
 	</body>
 </html>
