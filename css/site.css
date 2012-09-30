@@ -13,3 +13,6 @@
 .tweet-user	    {font-weight: bold;}
 .tweet-text a   {text-decoration: none;}
 .tweet-text a:hover {text-decoration: underline;}
+
+.codejo-next  {border-color: #EEEEEE; border: solid 0.1em #EEEEEE; padding: 10px;}
+.codejo-next .codejo-details {padding-left: 5px;}
