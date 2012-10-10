@@ -1,10 +1,16 @@
-.header  		{background-color: #3A87AD; color: white; padding: 10px; }
+.header  		{ color: white; padding: 10px; }
 .header a 		{text-decoration: none; color: white;}
 .header a:hover {text-decoration: underline; color: white; cursor: pointer;}
 .rounded	 	{-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
 
+.twitter .header {background-color: #3A87AD;}
+.nextCodejo .header	{background-color: #3A87AD;}
+.about .header {background-color: #3A87AD;}
 
-#twitterContent {background-color: white; width: 350px;}
+.row 			{color: #444444;}
+.row .details   {padding: 10px;	}
+
+#twitterContent {background-color: white; }
 .tweet			{padding: 10px; border-bottom: 1px solid #EBEBEB;}	
 .tweet-image	{float: left; height: 48px; width: 48px; margin-top: 3px;}
 .tweet-content 	{margin-left: 58px; min-height: 48px; }
@@ -16,4 +22,5 @@
 
 
 .codejo-next .codejo-details {padding-left: 5px;}
+.codejo-details .address a {color: #444444;}
 .border-box  {border-color: #EEEEEE; border: solid 0.1em #EEEEEE; padding: 10px;}
