@@ -1,7 +1,7 @@
 require './deployment/deployer.rb'
 require './test/lib/qunit.rb'
 
-task :default => [:dependencies, :publish]
+task :default => [:dependencies, :qunit, :publish]
 
 task :dependencies do
 	sh 'bundle install'
