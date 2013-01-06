@@ -9,8 +9,8 @@ end
 task :publish do
 	deployment_folders = ['img', 'lib', 'css']
 	deployment_folders.each do |folder|
-		Deployer.run(folder, folder)
+		Deployer.run("site/#{folder}", folder)
 	end
-	Deployer.run_for_file('index.html', 'index.html')
+	Deployer.run_for_file('site/index.html', 'index.html')
 end
 
