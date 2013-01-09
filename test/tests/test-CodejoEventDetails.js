@@ -1,5 +1,6 @@
 (function($, undefined){
-	test('example', function(){
+	module("Codejo Event");
+	test('ok', function(){
 		ok(true);
 	});
 })(jQuery);

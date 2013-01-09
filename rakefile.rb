@@ -1,10 +1,16 @@
 require './deployment/deployer.rb'
 require './test/lib/qunit.rb'
 
-task :default => [:dependencies, :qunit, :publish]
+task :default => [:dependencies, :qunit, :commit, :publish]
 
 task :dependencies do
 	sh 'bundle install'
+end
+
+task :commit do
+	sh 'git add .'
+	sh "git commit -a -m 'a commit'"
+	sh 'git push'
 end
 
 task :publish do
