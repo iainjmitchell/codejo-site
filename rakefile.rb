@@ -14,7 +14,7 @@ task :commit do
 end
 
 task :publish do
-	deployment_folders = ['img', 'lib', 'css']
+	deployment_folders = ['img', 'lib', 'css', 'src']
 	deployment_folders.each do |folder|
 		Deployer.run("site/#{folder}", folder)
 	end
