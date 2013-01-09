@@ -6,6 +6,6 @@
 		new NextCodejoEvent(context, {
 			dateTime: "2013-01-22 18:30:00" 
 		});
-		equal(context.find("#codejo-date").val(), "Tuesday 22nd Jan (18:00)");
+		equal(context.find("#codejo-date").text(), "Tuesday 22nd Jan (18:00)");
 	});
 })(jQuery);

@@ -1,7 +1,9 @@
 (function($, module, undefined){
 	module.NextCodejoEvent = function(context, eventDetails){
+		console.log(context
+			.find("#codejo-date"));
 		context
 			.find("#codejo-date")
-				.val("Tuesday 22nd Jan (18:00)");
+				.text("Tuesday 22nd Jan (18:00)");
 	};
 })(jQuery, window);

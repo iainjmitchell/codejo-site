@@ -73,7 +73,7 @@
 			        	<strong>Theme</strong><br>
 						Minesweeper Kata in Ruby, focussing on TDD</br>  
 			        	<strong>When?</strong><br>
-			        	Tuesday 22nd Jan (18:30)<br>
+			        	<span id="codejo-date"></span><br>
 			        	<strong>Where?</strong><br>
 			        	<div class="address">
 			        		TechHub<br>
@@ -108,6 +108,9 @@
 				$(document).ready(function(){
 					$("#twitterContent").twitTweet({
 						userName: "manc_codejo",
+					});
+					new NextCodejoEvent($(".codejo-details"), {
+						dateTime: "2013-01-22 18:30:00"
 					});
 				});
 			})(jQuery);
