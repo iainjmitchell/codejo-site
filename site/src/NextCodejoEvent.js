@@ -1,9 +1,16 @@
 (function($, module, undefined){
 	module.NextCodejoEvent = function(context, eventDetails){
-		console.log(context
-			.find("#codejo-date"));
-		context
-			.find("#codejo-date")
-				.text("Tuesday 22nd Jan (18:00)");
+		function init(){
+			context
+				.find("#codejo-date")
+					.text(getFormattedDateTime(eventDetails.dateTime));
+		}
+
+		function getFormattedDateTime(dateTime){
+			var date = moment(dateTime.replace(" ", "T")),
+				formattedDate = date.format("dddd Do MMM [(]HH:mm[)]");
+			return formattedDate;
+		}
+		init();
 	};
 })(jQuery, window);
