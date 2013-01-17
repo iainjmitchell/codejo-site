@@ -5,14 +5,20 @@
 
 		function init(){
 			context
-				.find("#codejo-date")
-					.text(codejoDateTime.getFormatted())
+				.find("#next-codejo")
+					.show()
+					.find("#codejo-date")
+						.text(codejoDateTime.getFormatted())
+						.end()
+					.find("#codejo-theme")
+						.text(codejoTheme.get(eventDetails.title))
+						.end()
+					.find("#register")
+						.attr("href", eventDetails.registrationUrl)
+						.end()
 					.end()
-				.find("#codejo-theme")
-					.text(codejoTheme.get(eventDetails.title))
-					.end()
-				.find("#register")
-					.attr("href", eventDetails.registrationUrl);
+				.find("#no-codejo-event")
+					.hide();
 		}
 		init();
 	};

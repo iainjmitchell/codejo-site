@@ -64,4 +64,24 @@
 		});
 		equal(context.find("#register").attr("href"), url);
 	});
+
+	test("If next codejo is hidden, Then Next Codejo made visible", function(){
+		var context = $(".codejo-details"),
+			nextCodejo = context.find("#next-codejo");
+		nextCodejo.hide();
+		new NextCodejoEvent(context, {
+			dateTime: defaultDateTime,
+			title : defaultTitle
+		})
+		equal(nextCodejo.is(":visible"), true);
+	});
+
+	test("No Codejo not visible", function(){
+		var context = $(".codejo-details");
+		new NextCodejoEvent(context, {
+			dateTime: defaultDateTime,
+			title : defaultTitle
+		})
+		equal(context.find("#no-codejo-event").is(":visible"), false);
+	});
 })(jQuery);
