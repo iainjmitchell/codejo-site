@@ -42,4 +42,26 @@
 		});
 		equal(context.find("#codejo-theme").text(), theme);
 	});
+
+	test("Codejo registration url is added to registration button", function(){
+		var url = "A url",
+			context = $(".codejo-details");
+		new NextCodejoEvent(context, {
+			dateTime: defaultDateTime,
+			title : defaultTitle,
+			registrationUrl: url
+		});
+		equal(context.find("#register").attr("href"), url);
+	});
+
+	test("Another Codejo registration url is added to registration button", function(){
+		var url = "Another url",
+			context = $(".codejo-details");
+		new NextCodejoEvent(context, {
+			dateTime: defaultDateTime,
+			title : defaultTitle,
+			registrationUrl: url
+		});
+		equal(context.find("#register").attr("href"), url);
+	});
 })(jQuery);
