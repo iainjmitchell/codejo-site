@@ -49,6 +49,4 @@
 			get : get
 		}
 	};
-
-
 })(jQuery, window);
