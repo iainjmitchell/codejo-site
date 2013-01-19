@@ -118,11 +118,13 @@
 					$("#twitterContent").twitTweet({
 						userName: "manc_codejo",
 					});
-					new NextCodejoEvent($(".codejo-details"), {
-						dateTime: "2013-01-22 18:30:00",
+
+					var codejoEventFactory = new CodejoEventFactory($(".codejo-details"), new EventBriteEventTranslator());
+					codejoEventFactory.create([{
+						start_date: "2013-01-22 18:30:00",
 						title: "Manchester Codejo 3 - Minesweeper Kata in Ruby",
-						registrationUrl: "http://manchester-codejo3.eventbrite.com"
-					});
+						url: "http://manchester-codejo3.eventbrite.com"
+					}]);
 				});
 			})(jQuery);
 		</script>
