@@ -1,77 +1,72 @@
 (function($, undefined){
+	var fakeEventAdapter = {
+		convert : function(){
+			return {
+					title: "A codejo - A theme",
+					dateTime: "2000-01-01 01:00:00"
+			};
+		}
+	}
+
 	module("Codejo Event Factory");
 	test("When no events, Then factory returns no codejo event", function(){
 		var noEvents = new EventsBuilder().build(),
-			codejoEvent = new CodejoEventFactory($(".codejo-details")).create(noEvents);
+			codejoEvent = new CodejoEventFactory($(".codejo-details"), fakeEventAdapter).create(noEvents);
 		ok(codejoEvent instanceof NoCodejoEvent);
 	});
 
 	test("When one event, Then factory returns next codejo event", function(){
-		var oneEvent = new EventsBuilder().withEvent(new EventBuilder()).build(),
-			codejoEvent = new CodejoEventFactory($(".codejo-details")).create(oneEvent);
+		var oneEvent = new EventsBuilder().withOneEvent().build(),
+			codejoEvent = new CodejoEventFactory($(".codejo-details"), fakeEventAdapter).create(oneEvent);
 		ok(codejoEvent instanceof NextCodejoEvent);
 	});
 
 	test("When multiple events, Then factory returns next codejo event", function(){
 		var multipleEvents = 
 				new EventsBuilder()
-					.withEvent(new EventBuilder())
-					.withEvent(new EventBuilder())
-					.withEvent(new EventBuilder())
-					.withEvent(new EventBuilder())
+					.withOneEvent()
+					.withOneEvent()
+					.withOneEvent()
+					.withOneEvent()
 					.build(),
-			codejoEvent = new CodejoEventFactory($(".codejo-details")).create(multipleEvents);
+			codejoEvent = new CodejoEventFactory($(".codejo-details"), fakeEventAdapter	).create(multipleEvents);
 		ok(codejoEvent instanceof NextCodejoEvent);
 	});
 
-	var EventsBuilder = function(){
-		var eventBuilders = [];
+	test("When one event, Then event converted by event adapter", function(){
+		var eventConverted,
+			events = new EventsBuilder().withOneEvent();
+			mockEventAdapter = function(){
+				return {
+					convert : function(eventDetails){
+						eventConverted = eventDetails;
+						return {
+							title: "A codejo - A theme",
+							dateTime: "2000-01-01 01:00:00"
+						};
+					}
+				}
+			},
+			codejoEvent = new CodejoEventFactory($(".codejo-details"), mockEventAdapter).create(events);
+		equal(eventConverted, events[0]);
+	});
 
-		function withEvent(eventBuilder){
-			eventBuilders.push(eventBuilder);
+	var EventsBuilder = function(){
+		var eventBuilders = [],
+			events = [];
+
+		function withOneEvent(){
+			events.push({});
 			return this;
 		}
 
 		function build(){
-			var count = 0,
-				numberOfEvents = eventBuilders.length,
-				events = [];
-			for(count; count < numberOfEvents; count++){
-				var eventDetails = 	eventBuilders[count].build();
-				events.push(eventBuilders[count].build())
-			}
 			return events;
 		}
 
 		return {
-			withEvent : withEvent,
+			withOneEvent : withOneEvent,
 			build : build
-		}
-	};
-
-	var EventBuilder = function(){
-		return {
-			build : function(){
-				return {};
-			}
-		}
+		};
 	};
 })(jQuery);
-
-
-
-var CodejoEventFactory = function(context){
-	function create(events){
-		if (events.length > 0){
-			return new NextCodejoEvent(context, {
-				title: "A codejo - A theme",
-				dateTime: "2000-01-01 01:00:00"
-			});
-		}
-		return new NoCodejoEvent(context);
-	}
-
-	return {
-		create : create
-	}
-};
