@@ -8,9 +8,13 @@ task :dependencies do
 end
 
 task :commit do
-	sh 'git add .'
-	sh "git commit -a -m 'a commit'"
-	sh 'git push'
+	puts "Committing and Pushing to Git"
+	require 'git_repository'
+	commit_message = ENV["m"] || 'no commit message'
+	git = GitRepository.new
+	git.add
+	git.commit(:message => "@{commit_message}")
+	git.push
 end
 
 task :publish do
